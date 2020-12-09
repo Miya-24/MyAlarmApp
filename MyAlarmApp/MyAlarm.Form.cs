@@ -84,7 +84,10 @@ namespace MyAlarmApp
             AlarmTimer.Enabled = false;
             //通知領域からメッセージ
             MyNotifyIcon.BalloonTipTitle = "おしらせ";
-            MyNotifyIcon.BalloonTipText = "おしらせのメッセージ";
+            var seconds = TimerValue * UnitMap[TimeUnit] / 1000;
+            var span = new TimeSpan(0, 0, seconds);
+            var text = span.ToString(@"hh\:mm\:ss") + "経過しました";
+            MyNotifyIcon.BalloonTipText = text;
             MyNotifyIcon.ShowBalloonTip(3000);
         }
     }
